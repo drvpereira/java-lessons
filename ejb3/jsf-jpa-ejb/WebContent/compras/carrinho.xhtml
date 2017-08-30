@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:dataTable value="#{ compraBean.produtosCarrinho }" var="c">
+	
+		<h:column>
+			#{ c.produto.nome }
+		</h:column>
+		
+		<h:column>
+			#{ c.produto.descricao }
+		</h:column>
+		
+		<h:column>
+			#{ c.produto.categoria.nome }
+		</h:column>
+		
+		<h:column>
+			#{ c.precoUnitario }
+		</h:column>
+		
+		<h:column>
+			#{ c.quantidade }
+		</h:column>
+		
+		<h:column>
+			#{ c.precoTotal }
+		</h:column>
+	
+	</h:dataTable>
+
+</html>

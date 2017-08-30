@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://calculadora" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://calculadora" xmlns:intf="http://calculadora" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://calculadora" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="dividir">
+    <complexType>
+     <sequence>
+      <element name="a" type="xsd:int"/>
+      <element name="b" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="dividirResponse">
+    <complexType>
+     <sequence>
+      <element name="dividirReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="multiplicar">
+    <complexType>
+     <sequence>
+      <element name="a" type="xsd:int"/>
+      <element name="b" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="multiplicarResponse">
+    <complexType>
+     <sequence>
+      <element name="multiplicarReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="somar">
+    <complexType>
+     <sequence>
+      <element name="a" type="xsd:int"/>
+      <element name="b" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="somarResponse">
+    <complexType>
+     <sequence>
+      <element name="somarReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="subtrair">
+    <complexType>
+     <sequence>
+      <element name="a" type="xsd:int"/>
+      <element name="b" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="subtrairResponse">
+    <complexType>
+     <sequence>
+      <element name="subtrairReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="subtrairRequest">
+
+      <wsdl:part element="impl:subtrair" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="multiplicarRequest">
+
+      <wsdl:part element="impl:multiplicar" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="somarResponse">
+
+      <wsdl:part element="impl:somarResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="multiplicarResponse">
+
+      <wsdl:part element="impl:multiplicarResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="somarRequest">
+
+      <wsdl:part element="impl:somar" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="subtrairResponse">
+
+      <wsdl:part element="impl:subtrairResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="dividirRequest">
+
+      <wsdl:part element="impl:dividir" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="dividirResponse">
+
+      <wsdl:part element="impl:dividirResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CalculadoraServiceImpl">
+
+      <wsdl:operation name="dividir">
+
+         <wsdl:input message="impl:dividirRequest" name="dividirRequest"/>
+
+         <wsdl:output message="impl:dividirResponse" name="dividirResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="multiplicar">
+
+         <wsdl:input message="impl:multiplicarRequest" name="multiplicarRequest"/>
+
+         <wsdl:output message="impl:multiplicarResponse" name="multiplicarResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="somar">
+
+         <wsdl:input message="impl:somarRequest" name="somarRequest"/>
+
+         <wsdl:output message="impl:somarResponse" name="somarResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="subtrair">
+
+         <wsdl:input message="impl:subtrairRequest" name="subtrairRequest"/>
+
+         <wsdl:output message="impl:subtrairResponse" name="subtrairResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CalculadoraServiceImplSoapBinding" type="impl:CalculadoraServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="dividir">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="dividirRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="dividirResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="multiplicar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="multiplicarRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="multiplicarResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="somar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="somarRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="somarResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="subtrair">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="subtrairRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="subtrairResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CalculadoraServiceImplService">
+
+      <wsdl:port binding="impl:CalculadoraServiceImplSoapBinding" name="CalculadoraServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/CalculadoraWebService/services/CalculadoraServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

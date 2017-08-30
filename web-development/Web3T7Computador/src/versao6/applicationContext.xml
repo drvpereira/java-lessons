@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+
+	<bean id="monitorLcd" class="versao6.MonitorLcd" scope="prototype"/>
+	<bean id="monitorLed" class="versao6.MonitorLed"/>
+	
+	<bean id="doisMonitores" class="versao6.DoisMonitores">
+		<constructor-arg index="0" ref="monitorLcd"/>
+		<constructor-arg index="1" ref="monitorLed"/>
+	</bean>
+	
+	<bean id="tecladoUsb" class="versao6.TecladoUsb"/>
+	
+	<bean id="impressoraLaser" class="versao6.ImpressoraLaser"/>
+	<bean id="impressoraJatoTinta" class="versao6.ImpressoraJatoTinta"/>
+	
+	<bean id="computador" class="versao6.Computador">
+		<property name="marca" value="HP"/>
+		<property name="monitor" ref="doisMonitores"/>
+		<property name="teclado" ref="tecladoUsb"/>
+		<property name="impressora" ref="impressoraJatoTinta"/>
+	</bean>
+	
+	<bean id="computador2" class="versao6.Computador">
+		<property name="marca" value="Miranda"/>
+		<property name="monitor" ref="monitorLcd"/>
+		<property name="teclado" ref="tecladoUsb"/>
+		<property name="impressora" ref="impressoraLaser"/>
+	</bean>
+
+</beans>

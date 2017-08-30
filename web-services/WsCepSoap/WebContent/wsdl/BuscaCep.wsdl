@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.cep" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.cep" xmlns:intf="http://ws.cep" xmlns:tns1="http://dominio.cep" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws.cep" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dominio.cep"/>
+   <element name="getLogradouro">
+    <complexType>
+     <sequence>
+      <element name="cep" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getLogradouroResponse">
+    <complexType>
+     <sequence>
+      <element name="getLogradouroReturn" type="tns1:Logradouro"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://dominio.cep" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="Estado">
+    <sequence>
+     <element name="id" type="xsd:int"/>
+     <element name="nome" nillable="true" type="xsd:string"/>
+     <element name="sigla" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Localidade">
+    <sequence>
+     <element name="estado" nillable="true" type="tns1:Estado"/>
+     <element name="id" type="xsd:int"/>
+     <element name="nome" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Bairro">
+    <sequence>
+     <element name="id" type="xsd:int"/>
+     <element name="localidade" nillable="true" type="tns1:Localidade"/>
+     <element name="nome" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Logradouro">
+    <sequence>
+     <element name="bairro" nillable="true" type="tns1:Bairro"/>
+     <element name="cep" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:int"/>
+     <element name="nome" nillable="true" type="xsd:string"/>
+     <element name="tipo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getLogradouroRequest">
+
+      <wsdl:part element="impl:getLogradouro" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getLogradouroResponse">
+
+      <wsdl:part element="impl:getLogradouroResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="BuscaCep">
+
+      <wsdl:operation name="getLogradouro">
+
+         <wsdl:input message="impl:getLogradouroRequest" name="getLogradouroRequest"/>
+
+         <wsdl:output message="impl:getLogradouroResponse" name="getLogradouroResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="BuscaCepSoapBinding" type="impl:BuscaCep">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getLogradouro">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getLogradouroRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getLogradouroResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="BuscaCepService">
+
+      <wsdl:port binding="impl:BuscaCepSoapBinding" name="BuscaCep">
+
+         <wsdlsoap:address location="http://localhost:8080/WsCepSoap/services/BuscaCep"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

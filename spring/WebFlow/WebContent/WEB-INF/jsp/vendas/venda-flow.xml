@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<var name="venda" class="exemplo.Venda"/>
+
+	<view-state id="informarPrecoNumeroItens" model="venda">
+		<transition on="submit" to="teste"/>
+	</view-state>
+
+	<decision-state id="teste">
+		<if test="currentUser.getPrincipal().isUserInRole('ROLE_ADMIN')" then="informarCategoria" else="mostrarResumoVenda"/>
+	</decision-state>
+
+	<view-state id="informarCategoria" model="venda">
+		<transition on="submit" to="necessitaEntrega" />
+	</view-state>
+
+	<decision-state id="necessitaEntrega">
+		<if test="venda.entrega" 
+			then="informarDetalhesEntrega" 
+			else="processarVenda" />
+	</decision-state>
+
+	<view-state id="informarDetalhesEntrega" model="venda">
+		<transition on="submit" to="processarVenda" />
+	</view-state>
+
+	<action-state id="processarVenda">
+		<evaluate expression="vendasService.processar(venda
+		)"/>
+		<transition on="success" to="mostrarResumoVenda" />
+	</action-state>
+
+	<end-state id="mostrarResumoVenda" view="mostrarResumoVenda.jsp"/>
+
+</flow>

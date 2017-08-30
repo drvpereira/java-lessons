@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:dataTable value="#{ produtoBean.produtos }" var="c">
+	
+		<h:column>
+			#{ c.nome }
+		</h:column>
+		
+		<h:column>
+			#{ c.descricao }
+		</h:column>
+		
+		<h:column>
+			#{ c.preco }
+		</h:column>
+		
+		<h:column>
+			#{ c.categoria.nome }
+		</h:column>
+	
+	</h:dataTable>
+
+</html>

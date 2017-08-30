@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:flow="http://www.springframework.org/schema/webflow-config"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.2.xsd">
+
+	<context:component-scan base-package="exemplo" />
+	<import resource="security-config.xml"/>
+
+	<!-- Handler Mapping Normal -->
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"
+		p:order="0" />
+
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
+
+	<!-- Dispatches requests mapped to
+		 org.springframework.web.servlet.mvc.Controller implementations -->
+	<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+
+	<!-- Enables FlowHandler URL mapping -->
+	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter"
+		p:flowExecutor-ref="flowExecutor" />
+
+	<!--
+		Maps request paths to flows in the flowRegistry; e.g. a path of
+		/hotels/booking looks for a flow with id "hotels/booking"
+	-->
+	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping"
+		p:order="1" p:flowRegistry-ref="flowRegistry" />
+
+	<flow:flow-executor id="flowExecutor">
+		<flow:flow-execution-listeners>
+			<flow:listener ref="securityFlowExecutionListener" />
+		</flow:flow-execution-listeners>
+	</flow:flow-executor>
+
+	<flow:flow-registry id="flowRegistry" base-path="/WEB-INF/jsp">
+		<flow:flow-location-pattern value="/**/*-flow.xml"/>
+	</flow:flow-registry>
+
+	<bean id="securityFlowExecutionListener"
+		class="org.springframework.webflow.security.SecurityFlowExecutionListener" />
+
+</beans>

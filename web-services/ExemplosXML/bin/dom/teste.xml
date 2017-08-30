@@ -1,0 +1,19 @@
+<clientes>
+
+	<cliente nome="Joao">
+		<compra>
+			<item nome="abc" valor="1"/>
+			<item nome="def" valor="4"/>
+		</compra>
+		<compra>
+			<item nome="xyz" valor="3"/>
+		</compra>
+	</cliente>
+	
+	<cliente nome="Francisco">
+		<compra>
+			<item nome="tyu" valor="2"/>
+		</compra>
+	</cliente>
+
+</clientes>

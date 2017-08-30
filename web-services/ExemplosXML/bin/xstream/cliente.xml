@@ -1,0 +1,29 @@
+<clientes>
+	<cliente>
+		<id>3</id>
+		<nome>Francisco da Silva</nome>
+		<cpf>111.222.333-44</cpf>
+		<endereco>
+			<id>4</id>
+			<logradouro>Av. Hermes da Fonseca</logradouro>
+			<numero>1234</numero>
+			<bairro>Tirol</bairro>
+			<cidade>Natal/RN</cidade>
+		</endereco>
+		<dataNascimento>2010-04-09 20:09:28.880 GMT-00:03</dataNascimento>
+	</cliente>
+	<cliente>
+		<id>1</id>
+		<nome>Fulano de Tal</nome>
+		<cpf>123.456.789-10</cpf>
+		<endereco>
+			<id>2</id>
+			<logradouro>Rua Mossoró</logradouro>
+			<numero>1234</numero>
+			<bairro>Petrópolis</bairro>
+			<cidade>Natal/RN</cidade>
+		</endereco>
+		<dataNascimento>2010-04-09 21:04:17.623 GMT-03:00</dataNascimento>
+	</cliente>
+
+</clientes>

@@ -1,0 +1,61 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from BuscaCepService WSDL service -->
+
+  <service name="BuscaCep" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ws.cep"/>
+      <parameter name="wsdlServiceElement" value="BuscaCepService"/>
+      <parameter name="schemaQualified" value="http://ws.cep,http://dominio.cep"/>
+      <parameter name="wsdlServicePort" value="BuscaCep"/>
+      <parameter name="className" value="cep.ws.BuscaCepSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="BuscaCep"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getLogradouro" qname="operNS:getLogradouro" xmlns:operNS="http://ws.cep" returnQName="retNS:getLogradouroReturn" xmlns:retNS="http://ws.cep" returnType="rtns:Logradouro" xmlns:rtns="http://dominio.cep" soapAction="" >
+        <parameter qname="pns:cep" xmlns:pns="http://ws.cep" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getLogradouro"/>
+
+      <typeMapping
+        xmlns:ns="http://dominio.cep"
+        qname="ns:Localidade"
+        type="java:cep.dominio.Localidade"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dominio.cep"
+        qname="ns:Bairro"
+        type="java:cep.dominio.Bairro"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dominio.cep"
+        qname="ns:Logradouro"
+        type="java:cep.dominio.Logradouro"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dominio.cep"
+        qname="ns:Estado"
+        type="java:cep.dominio.Estado"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

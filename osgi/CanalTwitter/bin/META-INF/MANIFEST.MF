@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: BundleTwitterDM
+Bundle-SymbolicName: br.com.javamagazine.osgi.twitterdm
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: br.com.javamagazine.mensagens.core

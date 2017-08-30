@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: TradutorAlemao
+Bundle-SymbolicName: TradutorAlemao
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: tradutoralemao.Activator
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: dicionariocore,
+ org.osgi.framework;version="1.3.0"

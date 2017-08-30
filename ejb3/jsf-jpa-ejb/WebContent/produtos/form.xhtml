@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:form>
+	
+		Nome: <h:inputText value="#{ produtoBean.produto.nome }"/> <br/>
+		
+		Descrição: <h:inputText value="#{ produtoBean.produto.descricao }"/> <br/>
+		
+		Preço: <h:inputText value="#{ produtoBean.produto.preco }"/> <br/>
+		
+		Categoria: <h:selectOneMenu value="#{ produtoBean.produto.categoria.id }">
+						<f:selectItems value="#{ categoriaBean.categorias }" var="c" itemLabel="#{ c.nome }" itemValue="#{ c.id }"/>
+					</h:selectOneMenu>
+		
+		<br/>
+		
+		<h:commandButton value="Cadastrar" action="#{ produtoBean.cadastrar }"/>
+	
+	</h:form>
+
+</html>

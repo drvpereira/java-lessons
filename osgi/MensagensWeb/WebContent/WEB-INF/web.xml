@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <servlet>
+    <servlet-name>dispatcher</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/bundle-config.xml,/WEB-INF/module-config.xml</param-value>
+    </init-param>
+    <init-param>
+      <param-name>contextClass</param-name>
+      <param-value>com.springsource.server.web.dm.ServerOsgiBundleXmlWebApplicationContext</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>dispatcher</servlet-name>
+    <url-pattern>/app/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>teste</servlet-name>
+    <servlet-class>br.com.javamagazine.mensagens.web.TesteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>teste</servlet-name>
+    <url-pattern>/teste</url-pattern>
+  </servlet-mapping>
+</web-app>
